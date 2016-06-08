@@ -14,6 +14,7 @@ var skycons = new Skycons();
   skycons.add("day1", Skycons.CLEAR_DAY);
   skycons.add("day2", Skycons.CLOUDY);
   skycons.add("day3", Skycons.RAIN);
+  skycons.add("day4", Skycons.PARTLY_CLOUDY_NIGHT);
 
   // start animation!
   skycons.play();
@@ -30,10 +31,10 @@ var skycons = new Skycons();
     //var forecast = item.forecast[1];  
     var forecast = item.forecast;      
     changeToday(cond.temp, cond.date, cond.text, cond.code);
-    changeDay1(forecast[1].low, forecast[1].high, forecast[1].date,  forecast[1].code  );
-    changeDay2(forecast[2].low, forecast[2].high, forecast[2].date,  forecast[2].code  );
-    changeDay3(forecast[3].low, forecast[3].high, forecast[3].date,  forecast[3].code  );  
-    
+    changeDay1(forecast[1].low, forecast[1].high, forecast[1].date, forecast[1].code);
+    changeDay2(forecast[2].low, forecast[2].high, forecast[2].date, forecast[2].code);
+    changeDay3(forecast[3].low, forecast[3].high, forecast[3].date, forecast[3].code); 
+    changeDay4(forecast[4].low, forecast[4].high, forecast[4].date, forecast[4].code); 
   };
 
 
@@ -88,10 +89,14 @@ var changeDay3 = function(tempL, tempH, day,  yahoocode ){
   $('td').each( function (index) {
      if (index===2) { $(this).replaceWith('<td>'+f2c(tempL)+'-'+f2c(tempH)+' &#8451;</td>');}  
     });
-  setSkyconsByYahooCode("day3",yahoocode);                              
+  ("day3",yahoocode);                              
 };  
 
-
+var changeDay4 = function(tempL, tempH, day,  yahoocode ){
+  $('#date4').text(day);
+  $('#temp4').replaceWith('<td>'+f2c(tempL)+'-'+f2c(tempH)+' &#8451;</td>');
+  setSkyconsByYahooCode("day4", yahoocode);                             
+};  
 
   
 /*
